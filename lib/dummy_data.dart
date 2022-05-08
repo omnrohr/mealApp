@@ -56,7 +56,7 @@ var DUMMY_CATEGORIES = const [
   ),
 ];
 
-const DUMMY_MEALS = [
+var DUMMY_MEALS = [
   Meal(
     id: 'm1',
     categories: [

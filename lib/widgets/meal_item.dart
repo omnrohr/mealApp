@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/meal_screen.dart';
 
+import '../screens/meal_screen.dart';
 import '../models/meal.dart';
 
 class MealItem extends StatelessWidget {
@@ -10,6 +10,7 @@ class MealItem extends StatelessWidget {
   final int cookingTime;
   final Complexity complexity;
   final Affordability affordability;
+  final Function removeItem;
 
   MealItem(
       {this.id,
@@ -17,9 +18,16 @@ class MealItem extends StatelessWidget {
       this.recipeTitle,
       this.cookingTime,
       this.complexity,
-      this.affordability});
+      this.affordability,
+      this.removeItem});
   void selectMeal(conx) {
-    Navigator.pushNamed(conx, MealScreen.mealScreenRout, arguments: id);
+    Navigator.pushNamed(conx, MealScreen.mealScreenRout, arguments: id).then(
+      (result) {
+        if (result != null) {
+          removeItem(result);
+        }
+      },
+    );
   }
 
   @override
@@ -88,7 +96,7 @@ class MealItem extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

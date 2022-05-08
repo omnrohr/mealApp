@@ -32,6 +32,11 @@ class MealScreen extends StatelessWidget {
     final selectedMeal = DUMMY_MEALS.firstWhere((meal) => meal.id == mealId);
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.pop(context, mealId);
+          },
+          child: Icon(Icons.delete)),
       appBar: AppBar(title: Text(selectedMeal.title)),
       body: SingleChildScrollView(
         child: Column(
